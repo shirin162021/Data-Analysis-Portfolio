@@ -55,3 +55,26 @@ data.to_csv('./datasets/cleaned_sales_data.csv', index=False)
 
 print("Data cleaning complete. Cleaned data saved.")
 
+# Import libraries
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# Load dataset
+data = pd.read_csv('../datasets/cleaned_sales_data.csv')
+
+# Sales distribution
+plt.figure(figsize=(10, 6))
+sns.histplot(data['Sales'], bins=20, kde=True)
+plt.title("Sales Distribution")
+plt.xlabel("Sales")
+plt.ylabel("Frequency")
+plt.show()
+
+# Profit by Product
+product_profit = data.groupby('Product')['Profit'].sum().reset_index()
+sns.barplot(x='Product', y='Profit', data=product_profit)
+plt.title("Profit by Product")
+plt.show()
+
+
