@@ -22,3 +22,36 @@ All datasets used are publicly available and included in the `/datasets` folder.
 1. Clone the repository:
    ```bash
    git clone https://github.com/yourusername/Data-Analysis-Portfolio.git
+   pip install -r requirements.txt
+
+---
+
+#### **2. Dataset (Example: `/datasets/sales_data.csv`)**
+Include sample datasets. Here’s a simple dataset example:
+
+| Date       | Product   | Sales | Profit |
+|------------|-----------|-------|--------|
+| 2023-01-01 | Product A | 200   | 50     |
+| 2023-01-02 | Product B | 300   | 80     |
+
+---
+
+#### **3. Python Script (Example: `/scripts/data_cleaning.py`)**
+A script for cleaning data.
+```python
+import pandas as pd
+
+# Load dataset
+data = pd.read_csv('./datasets/sales_data.csv')
+
+# Fill missing values
+data.fillna(0, inplace=True)
+
+# Convert date column to datetime
+data['Date'] = pd.to_datetime(data['Date'])
+
+# Save cleaned data
+data.to_csv('./datasets/cleaned_sales_data.csv', index=False)
+
+print("Data cleaning complete. Cleaned data saved.")
+
